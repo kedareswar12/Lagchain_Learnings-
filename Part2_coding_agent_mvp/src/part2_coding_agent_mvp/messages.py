@@ -50,7 +50,7 @@ def last_ai_text(messages : list[Any]) -> str:
 
     return ""
 
-
+# adding a loggable utility
 def last_tool_text(messages: list[Any]) -> str:
     """
     Return the content of the most recent tool result 
@@ -62,6 +62,8 @@ def last_tool_text(messages: list[Any]) -> str:
             return content if isinstance(content ,str) else str(content)
 
     return ""
+
+
 
 def describe_message(message : str) -> str :
     role = type(message).__name__.replace("Message", "").lower()
