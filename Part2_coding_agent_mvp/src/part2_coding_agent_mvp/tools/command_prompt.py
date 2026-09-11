@@ -46,7 +46,7 @@ def run_command(command :str ,  timeout: int = DEFAULT_TIMEOUT_SECONDS)-> str:
         return f"Error: {program!r} is not allowed to run through this tool"
 
     work_dir = get_work_dir()
-    work_dir.makdir(parents= True , exist_ok= True)
+    work_dir.mkdir(parents= True , exist_ok= True)
 
 
     try:
