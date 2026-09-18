@@ -14,7 +14,7 @@ _env= Environment(
 def render_template (name:str , **context :str)-> str:
     return _env.get_template(name).render(**context)
 
-def build_prompt(
+def build_system_prompt(
     *,
     agent_name: str = AGENT_NAME,
     extra_guidance : str = "" ,
