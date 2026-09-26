@@ -5,7 +5,7 @@ from config.config import get_work_dir
 import os 
 import subprocess
 import time
-from tools.jobs import now_iso,BackgroundJob , register ,read_log_tail ,stop_pid ,all_jobs, is_alive
+from part2_coding_agent_mvp.tools.jobs import now_iso,BackgroundJob , register ,read_log_tail ,stop_pid ,all_jobs, is_alive
 from langchain.tools import tool
 
 

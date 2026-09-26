@@ -74,17 +74,15 @@ def deny_reason(tool_name : str , arguments : dict[str, Any]) -> str | None:
 class Protection_Middleware(AgentMiddleware):
     """ going to short circuit the tool calls that target secrets or dangerous payload """
 
-    def wrap_tool_call(self,
-     request: ToolCallRequest,
-     handler: Callable[[ToolCallRequest], ToolMessage | Command[Any]]) -> ToolMessage | Command[Any]:
+    def wrap_tool_call(self,request: ToolCallRequest,handler: Callable[[ToolCallRequest], ToolMessage | Command[Any]]) -> ToolMessage | Command[Any]:
 
-     name = request.tool_call.get('name' , "")
-     arguments = request.tool_call.get('args' , {})
+        name = request.tool_call.get('name' , "")
+        arguments = request.tool_call.get('args' , {})
 
 
-     reason = deny_reason(name ,arguments)
-     if reason is not None:
-        return _tool_message(request , reason)
+        reason = deny_reason(name ,arguments)
+        if reason is not None:
+            return _tool_message(request , reason)
 
         return handler(request)
 

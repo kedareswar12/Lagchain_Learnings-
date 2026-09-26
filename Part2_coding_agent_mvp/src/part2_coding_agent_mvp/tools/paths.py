@@ -7,7 +7,7 @@
 
 from fnmatch import fnmatch
 from pathlib import Path 
-from part2_coding_agent_mvp.config import get_work_dir
+from part2_coding_agent_mvp.config.config import get_work_dir
 
 
 BLOCKED_PATH_PATTERNS = [

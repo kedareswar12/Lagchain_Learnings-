@@ -25,11 +25,13 @@ class AuditMiddleware(AgentMiddleware):
             preview = str(response.content)[:200]
 
         self._write({
-            "tiemstamp": datetime.now(UTC).isformat(),
+            "tiemstamp": datetime.now(UTC).isoformat(),
             "tool" : request.tool_call.get('name'),
             "response_preview" : preview,
             "arguments" : request.tool_call.get('args'),
         })
+        
+        return response
         
     def _write(
         self,

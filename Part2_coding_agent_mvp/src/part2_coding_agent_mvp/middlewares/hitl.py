@@ -13,16 +13,16 @@ def build_hitl_middelware() -> HumanInTheLoopMiddleware :
                 "allowed_decisions": ["approve", "edit", "reject"],
                 "description": "Run a bash command in the current working directory (host machine not a sandbox)"
             },
-            "write_files" : 
+            "write_file" : 
             {
                 "allowed_decisions" : ["approve" , "edit", "reject", "respond"],
                 "description" : "write or overwrite a file on a disk "        
             },
             "edit_file" :
-             {
+            {
                 "allowed_decisions" : ["approve" , "edit", "reject", "respond"],
                 "description" : "Edit an exsisting file "           
-             }
+            }
         },
         description_prefix= " Coding agent needs your approvement to move ahed"
     )

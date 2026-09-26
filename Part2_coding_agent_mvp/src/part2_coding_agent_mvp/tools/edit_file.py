@@ -1,4 +1,4 @@
-from langchain.tools import tool, tools
+from langchain.tools import tool
 from part2_coding_agent_mvp.tools.paths import resolve_work_path
 from part2_coding_agent_mvp.tools.text import prepare_file_content
 from pydantic.v1.config import prepare_config
