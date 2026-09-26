@@ -15,7 +15,7 @@ def read_file(path:str)-> str:
         file_path= resolve_work_path(path)
 
     except ValueError as err:
-        raise ValueError(f"Path escapes the working directory : {err}")
+        return f"Path escapes the working directory : {err}"
 
     try:
         return file_path.read_text(encoding="utf-8")
@@ -24,4 +24,4 @@ def read_file(path:str)-> str:
     except PermissionError:
         raise PermissionError(f"Dont have the permisiion to read the file{path}")
     except Exception as err :
-        raise Exception(f"Error in handling the file {err}")
+        return f"Error in handling the file {err}" 

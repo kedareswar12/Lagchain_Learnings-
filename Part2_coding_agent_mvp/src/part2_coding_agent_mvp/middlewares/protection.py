@@ -35,6 +35,9 @@ def _tool_message(request : ToolCallRequest , reason :str)-> ToolMessage:
 def deny_reason(tool_name : str , arguments : dict[str, Any]) -> str | None:
 
     """Return a denial reason or None if call may proceed """
+    if tool_name == "run_command":
+        return None
+    
     if tool_name not in _FILE_TOOLS:
         return None
     

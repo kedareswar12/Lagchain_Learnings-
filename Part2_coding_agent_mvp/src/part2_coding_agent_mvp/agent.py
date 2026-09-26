@@ -1,7 +1,9 @@
 from langchain.agents import create_agent
 from langchain.agents.middleware import ModelCallLimitMiddleware
 from langchain.agents.structured_output import ProviderStrategy
+from langgraph.checkpoint.memory import InMemorySaver
 from part2_coding_agent_mvp.config.config import MAX_MODEL_CALLS_PER_RUNS, hitl_enabled
+from part2_coding_agent_mvp.memory import make_checkpointer
 from part2_coding_agent_mvp.middlewares.audit import AuditMiddleware
 from part2_coding_agent_mvp.middlewares.protection import Protection_Middleware
 from part2_coding_agent_mvp.middlewares.hitl import HumanInTheLoopMiddleware
@@ -43,6 +45,7 @@ def build_middleware(
 
 def build_agent(
     *,
+    checkpointer:InMemorySaver | None = None ,
     enable_hitl : bool | None  = None,
     extra_guidance: str = "",
     ):
@@ -54,5 +57,6 @@ def build_agent(
         system_prompt = build_system_prompt(extra_guidance=extra_guidance),
         build_middleware = build_middleware(enable_hitl=use_hitl),
         response_format= ProviderStrategy(TurnSummary),
+        checkpointer= checkpointer or make_checkpointer(),
         name = "Coding Agent"
     )
